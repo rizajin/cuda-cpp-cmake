@@ -1,3 +1,3 @@
 #pragma once
 #include <vector>
-bool ExecuteCuda(const std::vector<int>& setA, const std::vector<int>& setB);
+void ExecuteCuda(const std::vector<int>& setA, const std::vector<int>& setB, std::vector<int>& result);
