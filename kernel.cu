@@ -78,7 +78,7 @@ cudaError_t addWithCuda(const std::vector<int>& aset, const std::vector<int>& bs
         throw std::runtime_error("cudaMemcpy for a failed");
     }
 
-    addKernel<<<1, aset.size() >> > (a, b, res);
+    addKernel<<<1, aset.size()>>>(a, b, res);
     cudaStatus = cudaGetLastError();
     if (cudaStatus != cudaError_t::cudaSuccess)
     {
