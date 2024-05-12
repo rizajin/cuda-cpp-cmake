@@ -1,4 +1,17 @@
 cmake_minimum_required(VERSION 3.21)
 project(CudaCppCmake)
 
-add_executable(CudaCppCmake main.cpp)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CUDA_STANDARD 17)
+
+find_package(CUDA REQUIRED)
+
+add_executable(CudaCppCmake main.cpp kernel.cu)
+
+set_target_properties(
+    CudaCppCmake
+    PROPERTIES
+    CUDA_SEPARABLE_COMPILATION ON
+)
+target_include_directories(CudaCppCmake PRIVATE ${CUDA_INCLUDE_DIRS})
+target_link_libraries(CudaCppCmake ${CUDA_LIBRARIES})
